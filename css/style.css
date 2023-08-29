@@ -361,30 +361,6 @@ tbody tr.hide td img {
   transition: 0.2s ease-in-out 0.5s;
 }
 
-.status {
-  padding: 0.4rem 0;
-  border-radius: 2rem;
-  text-align: center;
-}
-
-.status.delivered {
-  background-color: #86e49d;
-  color: #006b21;
-}
-
-.status.cancelled {
-  background-color: #d893a3;
-  color: #b30021;
-}
-
-.status.pending {
-  background-color: #ebc474;
-}
-
-.status.shipped {
-  background-color: #6fcaea;
-}
-
 @media (max-width: 1000px) {
   td:not(:first-of-type) {
     min-width: 12.1rem;
