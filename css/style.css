@@ -51,6 +51,7 @@ header {
 
   position: fixed;
   width: 100%;
+  z-index: 1000;
 }
 
 #contacto > img {
@@ -88,7 +89,6 @@ nav li:hover {
 }
 
 /* #endregion HEADER */
-
 
 /* #region Section */
 section {
@@ -130,108 +130,248 @@ section > h1 {
 
 /* #endregion */
 
-
-/* #region Footer */
-@media (min-width: 570px) {
-  footer {
-    background: #122a40;
-    display: flex;
-  }
-}
-.link {
-  text-align: center;
-  width: 300px;
+/* #region Reseñas */
+.comments-container {
+  border-radius: 10px;
+  background-color: #122a40;
+	margin: 60px auto 15px;
+	width: 768px;
 }
 
-@media (min-width: 570px) {
-  .RedesSociales {
-    text-align: center;
-    justify-content: center;
-    margin-left: 2em;
-    margin-bottom: 15px;
-  }
+.comments-container h1 {
+  border-radius: 5px;
+  background-color: #145f87;
+	font-size: 36px;
+	color: white;
+	font-weight: 400;
 }
 
-.RedesSociales a {
-  display: inline-block;
-  min-height: 40px;
-  width: 40px;
-  background-color: #209ed8;
-  margin: 0 15px 10px 0;
-  text-align: center;
-  line-height: 40px;
-  border-radius: 50%;
-  color: white;
-  font-size: 20px;
+.comments-container h1 a {
+	font-size: 18px;
+	font-weight: 700;
 }
 
-.RedesSociales a:hover {
-  color: #209ed8;
-  background-color: white;
+.comments-list {
+	margin-top: 30px;
+	position: relative;
 }
 
-form {
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
+/**
+ * Lineas / Detalles
+ -----------------------*/
+.comments-list:before {
+	content: '';
+	width: 2px;
+	height: 100%;
+	background: #c7cacb;
+	position: absolute;
+	left: 32px;
+	top: 0;
 }
 
-input {
-  background-color: transparent;
-  padding: 15px;
-  outline: #145f87;
-  border: 2px solid #209ed8;
-  font-size: 17px;
-  margin-bottom: 15px;
-  color: white;
+.comments-list:after {
+	content: '';
+	position: absolute;
+	background: #c7cacb;
+	bottom: 0;
+	left: 27px;
+	width: 7px;
+	height: 7px;
+	border: 3px solid #dee1e3;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
 }
 
-::placeholder {
-  color: #209ed8;
+.reply-list:before, .reply-list:after {display: none;}
+.reply-list li:before {
+	content: '';
+	width: 60px;
+	height: 2px;
+	background: #c7cacb;
+	position: absolute;
+	top: 25px;
+	left: -55px;
 }
 
-.btn-Enviar-Formulario {
-  background-color: #209ed8;
-  color: white;
-  border: 0;
+
+.comments-list li {
+	margin-bottom: 15px;
+	display: block;
+	position: relative;
 }
 
-.btn-Enviar-Formulario:hover {
-  color: #209ed8;
-  background-color: white;
-  cursor: pointer;
+.comments-list li:after {
+	content: '';
+	display: block;
+	clear: both;
+	height: 0;
+	width: 0;
 }
 
-#btn-ir-arriba {
-  cursor: pointer;
-  display: fixed;
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-
-  background: #209ed8;
-  height: 50px;
-  width: 50px;
-  border-radius: 25px;
-  border: none;
-
-  box-shadow: 0px 12px 7px rgba(0, 0, 0, 0.1);
-  transition: 300ms ease;
+.reply-list {
+	padding-left: 88px;
+	clear: both;
+	margin-top: 15px;
+}
+/**
+ * Avatar
+ ---------------------------*/
+.comments-list .comment-avatar {
+	width: 65px;
+	height: 65px;
+	position: relative;
+	z-index: 99;
+	float: left;
+	border: 3px solid #FFF;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+	box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+	overflow: hidden;
 }
 
-#btn-ir-arriba:hover {
-  background: #145f87;
-  transform: translateY(-0.5rem);
+.comments-list .comment-avatar img {
+	width: 100%;
+	height: 100%;
 }
 
-#btn-ir-arriba svg {
-  stroke: white;
-  stroke-width: 3px;
-  width: 25px;
-  fill: none;
+.reply-list .comment-avatar {
+	width: 50px;
+	height: 50px;
 }
-/* #endregion Footer */
 
+.comment-main-level:after {
+	content: '';
+	width: 0;
+	height: 0;
+	display: block;
+	clear: both;
+}
+/**
+ * Caja del Comentario
+ ---------------------------*/
+.comments-list .comment-box {
+	width: 680px;
+	float: right;
+	position: relative;
+	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.15);
+	-moz-box-shadow: 0 1px 1px rgba(0,0,0,0.15);
+	box-shadow: 0 1px 1px rgba(0,0,0,0.15);
+}
+
+.comments-list .comment-box:before, .comments-list .comment-box:after {
+	content: '';
+	height: 0;
+	width: 0;
+	position: absolute;
+	display: block;
+	border-width: 10px 12px 10px 0;
+	border-style: solid;
+	border-color: transparent #FCFCFC;
+	top: 8px;
+	left: -11px;
+}
+
+.comments-list .comment-box:before {
+	border-width: 11px 13px 11px 0;
+	border-color: transparent rgba(0,0,0,0.05);
+	left: -12px;
+}
+
+.reply-list .comment-box {
+	width: 610px;
+}
+.comment-box .comment-head {
+	background: #FCFCFC;
+	padding: 10px 12px;
+	border-bottom: 1px solid #E5E5E5;
+	overflow: hidden;
+	-webkit-border-radius: 4px 4px 0 0;
+	-moz-border-radius: 4px 4px 0 0;
+	border-radius: 4px 4px 0 0;
+}
+
+.comment-box .comment-head i {
+	float: right;
+	margin-left: 14px;
+	position: relative;
+	top: 2px;
+	color: #A6A6A6;
+	cursor: pointer;
+	-webkit-transition: color 0.3s ease;
+	-o-transition: color 0.3s ease;
+	transition: color 0.3s ease;
+}
+
+.comment-box .comment-head i:hover {
+	color: #03658c;
+}
+
+.comment-box .comment-name {
+	color: #283035;
+	font-size: 14px;
+	font-weight: 700;
+	float: left;
+	margin-right: 10px;
+}
+
+.comment-box .comment-name a {
+	color: #283035;
+}
+
+.comment-box .comment-head span {
+	float: left;
+	color: #999;
+	font-size: 13px;
+	position: relative;
+	top: 1px;
+}
+
+.comment-box .comment-content {
+	background: #FFF;
+	padding: 12px;
+	font-size: 15px;
+	color: #595959;
+	-webkit-border-radius: 0 0 4px 4px;
+	-moz-border-radius: 0 0 4px 4px;
+	border-radius: 0 0 4px 4px;
+}
+
+.comment-box .comment-name.by-author, .comment-box .comment-name.by-author a {color: #03658c;}
+.comment-box .comment-name.by-author:after {
+	content: 'autor';
+	background: #03658c;
+	color: #FFF;
+	font-size: 12px;
+	padding: 3px 5px;
+	font-weight: 700;
+	margin-left: 10px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+
+/** =====================
+ * Responsive
+ ========================*/
+@media only screen and (max-width: 766px) {
+	.comments-container {
+		width: 480px;
+	}
+
+	.comments-list .comment-box {
+		width: 390px;
+	}
+
+	.reply-list .comment-box {
+		width: 320px;
+	}
+}
+
+/* #endregion */
 
 /* #region Top Mejores Juegos */
 .table-header {
@@ -416,9 +556,110 @@ tbody td.active {
   color: #20dbd8;
 }
 
-.star{
+.star {
   color: gold;
   font-size: 1.5rem;
+}
+
+/* #endregion */
+
+/* #region FOOTER */
+footer {
+  background: #122a40;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.link {
+  text-align: center;
+  width: 300px;
+}
+
+.RedesSociales {
+  text-align: center;
+  margin-left: 2rem;
+  margin-bottom: auto;
+}
+
+.RedesSociales a {
+  display: inline-block;
+  min-height: 40px;
+  width: 40px;
+  background-color: #209ed8;
+  margin: 0 15px 10px 0;
+  margin-top: 4rem;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 50%;
+  color: white;
+  font-size: 20px;
+}
+
+.RedesSociales a:hover {
+  color: #209ed8;
+  background-color: white;
+}
+
+form {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  background-color: transparent;
+  padding: 15px;
+  outline: #145f87;
+  border: 2px solid #209ed8;
+  font-size: 17px;
+  margin-bottom: 15px;
+  color: white;
+}
+
+::placeholder {
+  color: #209ed8;
+}
+
+.btn-Enviar-Formulario {
+  background-color: #209ed8;
+  color: white;
+  border: 0;
+}
+
+.btn-Enviar-Formulario:hover {
+  color: #209ed8;
+  background-color: white;
+  cursor: pointer;
+}
+
+#btn-ir-arriba {
+  cursor: pointer;
+  display: fixed;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+
+  background: #209ed8;
+  height: 50px;
+  width: 50px;
+  border-radius: 25px;
+  border: none;
+
+  box-shadow: 0px 12px 7px rgba(0, 0, 0, 0.1);
+  transition: 300ms ease;
+}
+
+#btn-ir-arriba:hover {
+  background: #145f87;
+  transform: translateY(-0.5rem);
+}
+
+#btn-ir-arriba svg {
+  stroke: white;
+  stroke-width: 3px;
+  width: 25px;
+  fill: none;
 }
 
 /* #endregion */
